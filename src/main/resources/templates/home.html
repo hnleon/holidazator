@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text='#{home.title}'>Title</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/app.css" th:href="@{/assets/css/app.css}" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div class="auth_block">
+        <h1 th:text="#{home.welcome}">Welcome Tag</h1>
+        <div class="auth_block">
+            <p th:if="${loginError}" th:text="#{home.loginError}">Login error text</p>
+            <form method="post" th:action="@{/login}">
+                <label for="username" th:text="#{home.username}">Username</label>:
+                <input type="text" id="username" name="username" autofocus="autofocus" />
+                <label for="password" th:text="#{home.password}">Password</label>:
+                <input type="password" id="password" name="password" />
+                <input type="submit" class="button green" value="Login" th:value="#{home.login}" />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

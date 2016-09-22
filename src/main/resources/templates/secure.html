@@ -1,0 +1,151 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text='#{secure.title}'>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/jquery-ui.min.css"
+            media="all" th:href="@{/assets/css/jquery-ui.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/jquery-ui.structure.min.css"
+            media="all" th:href="@{/assets/css/jquery-ui.structure.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/jquery-ui.theme.min.css"
+            media="all" th:href="@{/assets/css/jquery-ui.theme.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/app.css"
+            media="all" th:href="@{/assets/css/app.css}" />
+    <script type="text/javascript" src="../static/assets/js/jquery-3.1.0.min.js"
+            th:src="@{/assets/js/jquery-3.1.0.min.js}"></script>
+    <script type="text/javascript" src="../static/assets/js/jquery-ui.min.js"
+            th:src="@{/assets/js/jquery-ui.min.js}"></script>
+    <script type="text/javascript" src="../static/assets/js/app.js"
+            th:src="@{/assets/js/app.js}"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        jQuery(document).ready(function ($) {
+            app.initDatepickers(
+                    [[#{picker.dateFormat}]],
+                    [[#{day.firstDay}]],
+                    [ [[#{day.su}]], [[#{day.mo}]], [[#{day.tu}]], [[#{day.we}]], [[#{day.th}]], [[#{day.fr}]], [[#{day.sa}]] ],
+                    [ [[#{month.january}]], [[#{month.february}]], [[#{month.march}]], [[#{month.april}]],
+                        [[#{month.may}]], [[#{month.june}]], [[#{month.july}]], [[#{month.august}]],
+                        [[#{month.september}]], [[#{month.october}]], [[#{month.november}]], [[#{month.december}]] ]
+            );
+        });
+        /*]]>*/
+    </script>
+</head>
+<body class="secure">
+    <div class="secure_block">
+        <h1 th:text="#{secure.welcome}">Welcome tag!</h1>
+        <p>
+            <a href='#' th:href='@{/logout}' th:text='#{secure.logout}'>Logout</a>
+        </p>
+        <form action="#" method="post" th:action="@{/find}">
+            <label for="from" th:text="#{secure.dateFrom}">Date from</label>
+            <input type="text" id="from" name="from" class="" th:value="${{from}}" />
+            <label for="to" th:text="#{secure.dateTo}">Date to</label>
+            <input type="text" id="to" name="to" class="" th:value="${{to}}" />
+            <br/><input type="submit" class="button green" value="Find" th:value="#{secure.findHolidays}" />
+        </form>
+        <div class="holiday_list" th:unless="${#lists.isEmpty(holidays)}">
+            <div class="range_title" th:text="#{secure.listFrom}+':'">From</div>
+            <div class="range_value" th:text="${{from}}">2016-01-01</div>
+            <div class="range_title" th:text="#{secure.listTo}+':'">To</div>
+            <div class="range_value" th:text="${{to}}">2016-01-31</div>
+            <div class="range_title" th:text="#{secure.listCount}+':'">Count</div>
+            <div class="range_value" th:text="${#lists.size(holidays)}">16</div>
+            <table class="holiday_list">
+                <thead>
+                    <tr>
+                        <th class="index" th:text="#{secure.listHeaderIndex}">#</th>
+                        <th class="date" th:text="#{secure.listHeaderDate}">Date</th>
+                        <th th:text="#{secure.listHeaderName}">Name</th>
+                    </tr>
+                </thead>
+                <tbody th:remove="all-but-first">
+                    <tr th:each="holiday,itrStat : ${holidays}" th:class="${itrStat.odd} ? 'even'">
+                        <td th:text="${itrStat.count}">1</td>
+                        <td th:text="${{holiday.holidayDate}}">2016-01-01</td>
+                        <td th:text="${holiday.name}">New Year's Day</td>
+                    </tr>
+                    <tr class="even">
+                        <td>2</td>
+                        <td>2016-01-02</td>
+                        <td>Saturday</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2016-01-03</td>
+                        <td>Sunday</td>
+                    </tr>
+                    <tr class="even">
+                        <td>4</td>
+                        <td>2016-01-07</td>
+                        <td>Christmas Day</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>2016-01-08</td>
+                        <td>Christmas Day holiday</td>
+                    </tr>
+                    <tr class="even">
+                        <td>6</td>
+                        <td>2016-01-09</td>
+                        <td>Saturday</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>2016-01-10</td>
+                        <td>Sunday</td>
+                    </tr>
+                    <tr class="even">
+                        <td>8</td>
+                        <td>2016-01-14</td>
+                        <td>Orthodox New Year</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>2016-01-16</td>
+                        <td>Saturday</td>
+                    </tr>
+                    <tr class="even">
+                        <td>10</td>
+                        <td>2016-01-17</td>
+                        <td>Sunday</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>2016-01-22</td>
+                        <td>Ukrainian Unity Day</td>
+                    </tr>
+                    <tr class="even">
+                        <td>12</td>
+                        <td>2016-01-23</td>
+                        <td>Saturday</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>2016-01-24</td>
+                        <td>Sunday</td>
+                    </tr>
+                    <tr class="even">
+                        <td>14</td>
+                        <td>2016-01-25</td>
+                        <td>Tatiana Day</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>2016-01-30</td>
+                        <td>Saturday</td>
+                    </tr>
+                    <tr class="even">
+                        <td>16</td>
+                        <td>2016-01-31</td>
+                        <td>Sunday</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

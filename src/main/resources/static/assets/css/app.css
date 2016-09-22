@@ -1,0 +1,118 @@
+body {
+    width:100%;
+    text-align: center;
+    background: #ffdddd;
+    padding: 0;
+    margin: 0;
+}
+body.secure {
+    background: #ddffdd;
+}
+
+.auth_block {
+    position: relative;
+    width: 60%;
+    display: inline-block;
+    padding: 35px 5%;
+    margin: 35px 0;
+    background: #fff;
+    vertical-align:middle;
+    border-radius: 2px;
+    z-index: 10;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+}
+.auth_block p {
+    color: #dd0000;
+}
+.auth_block input[type="text"], .auth_block input[type="password"]  {
+    display: block;
+    width: 100%;
+    margin: 0 0 10px 0;
+    border: #aaa 1px solid;
+    border-radius: 3px;
+    padding: 7px;
+    outline: 0;
+}
+
+.secure_block {
+    width: 85%;
+    display: inline-block;
+    padding: 35px 5%;
+    margin: 35px 0;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+}
+.secure_block input[type="text"] {
+    display: inline-block;
+    width: 20%;
+    margin: 0 25px 10px 0;
+    border: #aaa 1px solid;
+    border-radius: 3px;
+    padding: 7px;
+    outline: 0;
+}
+
+.button {
+    display:inline-block;
+    text-transform:uppercase;
+    padding:1em 1.5em 0.75em;
+    border-radius:2px;
+    font-weight:bold;
+    border:none;
+    color:#fff !important;
+    text-decoration:none;
+    font-size:14px;
+    line-height:1;
+    cursor:pointer;
+    margin-right:10px;
+    margin-top:20px;
+    outline: 0;
+}
+.button:hover {
+    opacity:0.9
+}
+.button.green {
+    background-color:#a5d16d;
+    box-shadow:0 0 5px #a4cf6c inset, 0 1px 1px #eee
+}
+
+.holiday_list {
+    width: 100%;
+    margin: 30px auto 0;
+    padding: 0;
+}
+.range_title {
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 5px 0 30px;
+}
+.range_value {
+    display: inline-block;
+}
+table.holiday_list {
+    border: #000 1px solid;
+    border-spacing: 0;
+    margin: 15px auto 0;
+}
+table.holiday_list th {
+    margin: 0;
+    padding: 5px;
+    border: #000 1px solid;
+    min-width: 50px;
+    background-color: #aaa;
+}
+table.holiday_list th.index {
+    width: 50px;
+}
+table.holiday_list th.date {
+    width: 200px;
+}
+table.holiday_list td {
+    margin: 0;
+    padding: 5px;
+    border: #000 1px solid;
+}
+.even {
+    background-color: #ddd;
+}
